@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Personas</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style/formulario.css' %}" />
+</head>
+<body>
+    <h1>Lista de Personas</h1>
+    <a href="{% url 'persona_create' %}">Agregar nueva persona</a>
+    <ul>
+        {% for persona in personas %}
+        <li>
+            {{ persona.nombre }} {{ persona.apellido_paterno }} {{ persona.apellidos }} - {{ persona.sexo }}
+            <a href="{% url 'persona_update' persona.pk %}">Editar</a>
+            <a href="{% url 'persona_delete' persona.pk %}">Eliminar</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
